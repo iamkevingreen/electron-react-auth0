@@ -1,0 +1,166 @@
+
+@mixin transform($transform){
+  -ms-transform: $transform; /* IE 9 */
+  -webkit-transform: $transform; /* Chrome, Safari, Opera */
+  transform: $transform;
+}
+@mixin transition($transition...) {
+  -webkit-transition: $transition;
+  -moz-transition:    $transition;
+  -o-transition:      $transition;
+  transition: $transition;
+}
+
+@mixin trip-shadow($color: rgba(0,0,0,.8)) {
+  -webkit-box-shadow: 0px 4px 10px 2px $color;
+  -moz-box-shadow: 0px 4px 10px 2px $color;
+  box-shadow: 0px 4px 10px 2px $color;
+}
+@mixin shadow($color: rgba(0,0,0,0.15)) {
+  -webkit-box-shadow: 0px 8px 22px -7px $color;
+  -moz-box-shadow: 0px 8px 22px -7px $color;
+  box-shadow: 0px 8px 22px -7px $color;
+}
+
+@mixin selector-drop() {
+  box-shadow: 0px 4px 10px -10px transparentize($black, 0.15);
+}
+
+@mixin dive-drop($color, $before: rgba(20,23,51,0.1)) {
+  &:before {
+    z-index: 0;
+    content: '';
+    width: 90%;
+    left: 5%;
+    bottom: 0px;
+    height: 100px;
+    position: absolute;
+    background: $color;
+    -webkit-box-shadow: 0px 10px 60px 0px $before;
+    -moz-box-shadow: 0px 10px 60px 0px $before;
+    box-shadow: 0px 10px 60px 0px $before;
+  }
+  &:after {
+    content: '';
+    z-index: 0;
+    left: 0;
+    width: 100%;
+    height: 130px;
+    bottom: 0px;
+    position: absolute;
+    background: $color;
+  }
+}
+
+@mixin animation($animation: all .2s ease-in-out) {
+  -webkit-animation: $animation;
+  -moz-animation:    $animation;
+  -o-animation:      $animation;
+  animation: $animation;
+}
+
+@mixin keyframes($name, $from, $to) {
+  @-webkit-keyframes #{$name} {
+    from { -webkit-transform: $from; }
+    to { -webkit-transform: $to; }
+  }
+  @-moz-keyframes #{$name} {
+    from { -moz-transform: $from; }
+    to { -moz-transform: $to; }
+  }
+  @-o-keyframes #{$name} {
+    from { -o-transform: $from; }
+    to { -o-transform: $to; }
+  }
+  @keyframes #{$name} {
+    from { transform: $from; }
+    to { transform: $to; }
+  }
+}
+
+@mixin greyscale() {
+  -webkit-filter: grayscale(100%);
+  -moz-filter: grayscale(100%);
+  -ms-filter: grayscale(100%);
+  -o-filter: grayscale(100%);
+  filter: grayscale(100%);
+  filter: url(grayscale.svg); /* Firefox 4+ */
+  filter: gray; /* IE 6-9 */;
+}
+
+
+@mixin linear-gradient($top, $bottom){
+    background: $top; /* Old browsers */
+    background: -moz-linear-gradient(top,  $top 0%, $bottom 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,$top), color-stop(100%,$bottom)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  $top 0%,$bottom 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  $top 0%,$bottom 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  $top 0%,$bottom 100%); /* IE10+ */
+    background: linear-gradient($top 0%, $bottom 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#000000',GradientType=0 ); /* IE6-9 */
+}
+
+
+@mixin fullcolor() {
+  -webkit-filter: grayscale(0%);
+  -moz-filter: grayscale(0%);
+  -ms-filter: grayscale(0%);
+  -o-filter: grayscale(0%);
+  filter: grayscale(0%);
+  filter: url(grayscale.svg); /* Firefox 4+ */
+  filter: none; /* IE 6-9 */;
+}
+
+@mixin wrapper() {
+  max-width: $max;
+  margin: 0 auto;
+  padding: 0 10px;
+}
+
+@mixin bubble-drop() {
+  -webkit-box-shadow: 0px 0px 60px -10px rgba(0,0,0,0.05);
+  -moz-box-shadow: 0px 0px 60px -10px rgba(0,0,0,0.05);
+  box-shadow: 0px 0px 60px -10px rgba(0,0,0,0.05);
+}
+
+@mixin respond($width) {
+  @media (min-width: $width) {
+    @content;
+  }
+}
+//// Media Query Mixins ////
+@mixin respond-below($width) {
+  @media (max-width: $width - 1) {
+    @content;
+  }
+}
+
+@mixin respond-between($start, $end) {
+  @media (min-width: $start) and (max-width: $end - 1) {
+    @content;
+  }
+}
+
+@mixin respond-at-and-above($width) {
+  @media (min-width: $width) {
+    @content;
+  }
+}
+
+@mixin vertical-respond-below($height) {
+  @media (max-height: $height - 1) {
+    @content;
+  }
+}
+
+@mixin vertical-respond-between($start, $end) {
+  @media (min-height: $start) and (max-height: $end - 1) {
+    @content;
+  }
+}
+
+@mixin vertical-respond-at-and-above($height) {
+  @media (min-height: $height) {
+    @content;
+  }
+}
