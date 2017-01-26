@@ -12,6 +12,7 @@ export default class Home extends Component {
             <li>React Router</li>
             <li>Hot Module Reloading with Webpack</li>
             <li>Kept it as unopinionated as I could :D</li>
+            <li>SASS because I still hate the state of javascript styling</li>
           </ul>
         </div>
       </div>

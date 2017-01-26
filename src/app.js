@@ -1,8 +1,11 @@
 import './styles/app.scss'
 
+import Config from '../config'
+
 import React, { Component } from 'react'
 import { render } from 'react-dom'
 import { Router, Route, IndexRoute, hashHistory } from 'react-router'
+import AuthService from './utils/AuthService'
 
 import Layout from './Layout'
 import Home from './components/pages/Home'
