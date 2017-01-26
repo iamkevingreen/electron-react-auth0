@@ -6,7 +6,19 @@
 </head>
 <body>
   <div id="app"></div>
-  <script src="http://localhost:8080/webpack-dev-server.js"></script>
-  <script src="http://localhost:8080/build/app.bundle.js"></script>
+  <script>
+  (function() {
+    const script = document.createElement('script');
+    script.src = process.env.ENV === 'development' ? '"http://localhost:8080/webpack-dev-server.js' : '';
+    document.write(script.outerHTML);
+  }());
+</script>
+  <script>
+  (function() {
+    const script = document.createElement('script');
+    script.src = process.env.ENV === 'development' ? 'http://localhost:8080/build/app.bundle.js' : './build/app.bundle.js';
+    document.write(script.outerHTML);
+  }());
+</script>
 </body>
 </html>
