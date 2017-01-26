@@ -8,26 +8,49 @@ export default class AuthService {
     // Configure Auth0
     this.lock = new Auth0Lock(clientId, domain, {
       auth: {
-        redirectUrl: 'http://localhost:8080/login',
-        responseType: 'token'
+        // redirectUrl: 'http://localhost:8080/login',
+        // responseType: 'token'
+        redirect: false,
+        sso: false
       }
     })
     // Add callback for lock `authenticated` event
     this.lock.on('authenticated', this._doAuthentication.bind(this))
     // binds login functions to keep this context
     this.login = this.login.bind(this)
+    this.setProfile = this.setProfile.bind(this)
   }
 
   _doAuthentication(authResult) {
     // Saves the user token
     this.setToken(authResult.idToken)
     // navigate to the home route
-    browserHistory.replace('/home')
+    browserHistory.replace('/')
+
+    this.lock.getProfile(authResult.idToken, (error, profile) => {
+      if (error) {
+        console.log('Error loading the Profile', error)
+      } else {
+        this.setProfile(profile)
+      }
+    })
   }
 
   login() {
     // Call the show method to display the widget.
     this.lock.show()
+  }
+
+  setProfile(profile) {
+   // Saves profile data to local storage
+   localStorage.setItem('profile', JSON.stringify(profile))
+   // Triggers profile_updated event to update the UI
+  }
+
+   getProfile() {
+    // Retrieves the profile data from local storage
+    const profile = localStorage.getItem('profile')
+    return profile ? JSON.parse(localStorage.profile) : {}
   }
 
   loggedIn() {
@@ -48,5 +71,6 @@ export default class AuthService {
   logout() {
     // Clear user token and profile data from local storage
     localStorage.removeItem('id_token');
+    localStorage.removeItem('profile');
   }
 }
