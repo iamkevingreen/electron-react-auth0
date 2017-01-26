@@ -8,7 +8,8 @@
     "start": "electron .",
     "watch": "webpack-dev-server",
     "electron-rebuild": "electron-rebuild",
-    "build": "webpack"
+    "build": "webpack",
+    "package": "webpack --config webpack.config.production.js && electron-packager . ReactAuth --platform=darwin --arch=all --overwrite"
   },
   "author": "iamkevingreen",
   "license": "MIT",

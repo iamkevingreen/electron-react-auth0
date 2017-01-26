@@ -1,7 +1,7 @@
 // webpack.config.js
 var path = require('path');
 var webpack = require('webpack');
-module.exports = {
+var config = {
     context: __dirname + '/src',
     entry: {
       app: ['webpack/hot/dev-server', './app.js']
@@ -43,3 +43,5 @@ module.exports = {
       new webpack.IgnorePlugin(new RegExp("^(fs|ipc)$"))
     ]
 };
+
+module.exports = config;

@@ -33,7 +33,6 @@ export default class Home extends Component {
             <li>name: {this.state.profile.given_name} {this.state.profile.family_name}</li>
             <li>email: {this.state.profile.email}</li>
           </ul>
-
         </div>
       </div>
     )
