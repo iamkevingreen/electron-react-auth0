@@ -1,15 +1,14 @@
 // src/utils/AuthService.js
-
+import { EventEmitter } from 'events'
 import Auth0Lock from 'auth0-lock'
 import { browserHistory } from 'react-router'
 
-export default class AuthService {
+export default class AuthService extends EventEmitter {
   constructor(clientId, domain) {
+    super()
     // Configure Auth0
     this.lock = new Auth0Lock(clientId, domain, {
       auth: {
-        // redirectUrl: 'http://localhost:8080/login',
-        // responseType: 'token'
         redirect: false,
         sso: false
       }
@@ -44,7 +43,7 @@ export default class AuthService {
   setProfile(profile) {
    // Saves profile data to local storage
    localStorage.setItem('profile', JSON.stringify(profile))
-   // Triggers profile_updated event to update the UI
+   this.emit('profile_updated', profile)
   }
 
    getProfile() {

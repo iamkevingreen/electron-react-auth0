@@ -11,13 +11,14 @@ export default class Home extends Component {
   }
   componentDidMount() {
     console.log('state', this.state)
+    console.log('process', process.env)
   }
   render() {
     return (
       <div className="home">
         <h1>Welcome to Electron React!</h1>
         <div className="home--features">
-          <h4>What's under the hood?</h4>
+          <h4>What's under the taco hood?</h4>
           <ul>
             <li>React</li>
             <li>React Router</li>

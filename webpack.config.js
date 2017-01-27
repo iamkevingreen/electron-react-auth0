@@ -1,6 +1,7 @@
 // webpack.config.js
 var path = require('path');
 var webpack = require('webpack');
+
 var config = {
     context: __dirname + '/src',
     entry: {
