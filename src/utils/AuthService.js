@@ -18,6 +18,7 @@ export default class AuthService extends EventEmitter {
     // binds login functions to keep this context
     this.login = this.login.bind(this)
     this.setProfile = this.setProfile.bind(this)
+    this.logout = this.logout.bind(this)
   }
 
   _doAuthentication(authResult) {
@@ -71,5 +72,6 @@ export default class AuthService extends EventEmitter {
     // Clear user token and profile data from local storage
     localStorage.removeItem('id_token');
     localStorage.removeItem('profile');
+    this.emit('profile_updated', {})
   }
 }

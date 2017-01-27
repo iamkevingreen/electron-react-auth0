@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Header from './components/global/Header'
 
 export default class Layout extends Component {
   constructor(props) {
@@ -13,6 +14,7 @@ export default class Layout extends Component {
     }
     return (
       <div className="app">
+        <Header auth={this.props.route.auth} />
         {children}
       </div>
     )

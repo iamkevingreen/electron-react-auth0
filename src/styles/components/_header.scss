@@ -1,0 +1,16 @@
+.header {
+  background: $white;
+  color: $black;
+  &--wrapper {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    align-items: center;
+  }
+  &--links {
+    display: flex;
+    a {
+      cursor: pointer;
+    }
+  }
+}
