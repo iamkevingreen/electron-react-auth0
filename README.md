@@ -1,6 +1,6 @@
 # Electron React Auth0
 ---------
-This repo has an in-depth tutorial on Medium that will explain main of the conventions and how it all works.
+This repo has an in-depth [tutorial on Medium](https://labs.redantler.com/building-an-electron-app-with-react-auth0-hmr-sass-a5dfed260763#.km3pyv990) that will explain main of the conventions and how it all works.
 
 If you want to just dive that works as well.
 
