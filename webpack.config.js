@@ -3,7 +3,7 @@ var path = require('path');
 var webpack = require('webpack');
 
 var config = {
-    context: __dirname + '/src',
+    context: path.resolve(__dirname + '/src'),
     entry: {
       app: ['webpack/hot/dev-server', './app.js']
     },
